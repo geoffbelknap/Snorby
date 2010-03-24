@@ -1,9 +1,9 @@
 <% # Big long ugly URL to DeepSee Sonar App on Solera DS Appliance  %>
 <% # This should probalby go somewhere else. %>
-<% event_specific_sonarcall = "https://#{@event.sensor.solera_dsfs_hostname}/deepsee_reports?user=#{current_user.solera_dsfs_user}&password=#{current_user.solera_dsfs_password}#pathString=%2Ftimespan%2F#{@event.timestamp.getutc.strftime('%m.%d.%Y.%I.%M.%S')}.#{@event.timestamp.getutc.strftime('%m.%d.%Y.%I.%M.%S')}%2Fipv4_address%2F#{@event.source_ip}_and_#{@event.destination_ip}%2F;reportIndex=0" %>
+<% event_specific_sonarcall = "https://#{@event.sensor.solera_dsfs_hostname}/deepsee_reports?user=#{current_user.solera_api_user}&password=#{current_user.solera_api_password}#pathString=%2Ftimespan%2F#{@event.timestamp.getutc.strftime('%m.%d.%Y.%I.%M.%S')}.#{@event.timestamp.getutc.strftime('%m.%d.%Y.%I.%M.%S')}%2Fipv4_address%2F#{@event.source_ip}_and_#{@event.destination_ip}%2F;reportIndex=0" %>
 <% # Big long ugly URL to Grab PCAP from Solera DS Appliance  %>
 <% # This, too, should probalby go somewhere else. %>
-<% dspcapcall2 = "https://#{@event.sensor.solera_dsfs_hostname}/ws/pcap?method=deepsee&user=#{current_user.solera_dsfs_user}&password=#{current_user.solera_dsfs_password}&path=%2Ftimespan%2F#{@event.timestamp.getutc.strftime('%m.%d.%Y.%I.%M.%S')}.#{@event.timestamp.getutc.strftime('%m.%d.%Y.%I.%M.%S')}%2Fipv4_address%2F#{@event.source_ip}_and_#{@event.destination_ip}%2Fdata.pcap" %>
+<% dspcapcall2 = "https://#{@event.sensor.solera_dsfs_hostname}/ws/pcap?method=deepsee&user=#{current_user.solera_api_user}&password=#{current_user.solera_api_password}&path=%2Ftimespan%2F#{@event.timestamp.getutc.strftime('%m.%d.%Y.%I.%M.%S')}.#{@event.timestamp.getutc.strftime('%m.%d.%Y.%I.%M.%S')}%2Fipv4_address%2F#{@event.source_ip}_and_#{@event.destination_ip}%2Fdata.pcap" %>
 
 <div id="event_show_page">
 	<div id="search_options" class='round'>

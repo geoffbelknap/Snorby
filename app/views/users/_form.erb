@@ -12,6 +12,12 @@
 <%= form.label :email %><br />
 <%= form.text_field :email %><br />
 <br />
+<%= form.label :solera_api_user %><br />
+<%= form.text_field :solera_api_user %><br />
+<br />
+<%= form.label :solera_api_pass %><br />
+<%= form.password_field :solera_api_pass %><br />
+<br />
 <%= form.label :password, form.object.new_record? ? nil : "Change password" %><br />
 <%= form.password_field :password, :class => 'password' %><br />
 <%= form.label :password_confirmation %><br />
