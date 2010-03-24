@@ -93,5 +93,13 @@ class Event < ActiveRecord::Base
       return 0
     end
   end
+  
+  def solera_call(user, type)
+    call = case type
+      when "sonar" then "https://#{self.sensor.solera_api_host}/deepsee_reports?user=#{user.solera_api_user}&password=#{user.solera_api_pass}#pathString=%2Ftimespan%2F#{self.timestamp.getutc.strftime('%m.%d.%Y.%I.%M.%S')}.#{self.timestamp.getutc.strftime('%m.%d.%Y.%I.%M.%S')}%2Fipv4_address%2F#{self.source_ip}_and_#{self.destination_ip}%2F;reportIndex=0"
+      when "pcap" then "https://#{self.sensor.solera_api_host}/ws/pcap?method=deepsee&user=#{user.solera_api_user}&password=#{user.solera_api_pass}&path=%2Ftimespan%2F#{self.timestamp.getutc.strftime('%m.%d.%Y.%I.%M.%S')}.#{self.timestamp.getutc.strftime('%m.%d.%Y.%I.%M.%S')}%2Fipv4_address%2F#{self.source_ip}_and_#{self.destination_ip}%2Fdata.pcap"
+    end
+    return call
+  end
 
 end

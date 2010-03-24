@@ -70,5 +70,5 @@ class ApplicationController < ActionController::Base
     status = interpret_status(status_code)
     render :template => "/errors/#{status[0,3]}.html.erb", :status => status
   end
-
+  
 end

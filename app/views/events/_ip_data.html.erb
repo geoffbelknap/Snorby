@@ -1,7 +1,7 @@
 <%- unless @event.iphdr.blank? -%> 
 <% # Big long ugly URL to DeepSee Sonar App on Solera DS Appliance  %>
 <% # This should probalby go somewhere else. %>
-<% ip_specific_sonarcall = "https://#{@event.sensor.solera_dsfs_hostname}/deepsee_reports?user=#{current_user.solera_api_user}&password=#{current_user.solera_api_password}#pathString=%2Fipv4_address%2F#{@event.source_ip}%2F;reportIndex=0" %>
+<% ip_specific_sonarcall = "https://#{@event.sensor.solera_api_host}/deepsee_reports?user=#{current_user.solera_api_user}&password=#{current_user.solera_api_pass}#pathString=%2Fipv4_address%2F#{@event.source_ip}%2F;reportIndex=0" %>
 
 	<h2>IP Address Information:</h2>
 	<br />
