@@ -1,8 +1,7 @@
 <%- unless @event.iphdr.blank? -%> 
-<% # Big long ugly URL to DeepSee Sonar App on Solera DS Appliance  %>
-<% # This should probalby go somewhere else. %>
+<%- if current_user.solera_api_enabled? -%>
 <% ip_specific_sonarcall = "https://#{@event.sensor.solera_api_host}/deepsee_reports?user=#{current_user.solera_api_user}&password=#{current_user.solera_api_pass}#pathString=%2Fipv4_address%2F#{@event.source_ip}%2F;reportIndex=0" %>
-
+<%- end -%>
 	<h2>IP Address Information:</h2>
 	<br />
 	<div id="ip_info">
@@ -20,11 +19,9 @@
 						<%= link_to "#{image_tag('other/whois.png', :size=>'12x12')}", 
 							{ :action => 'whois', :whois_host => @event.source_ip, :id => @event }, 
 								:rel => 'facebox', :title => "Whois: #{@event.source_ip}", :class => 'add_tipsy' %>
-						<% # This should be wrapped in some kind of conditional %>
-						<% # See All Indexed Data about Source IP in DeepSee Sonar %>
-						<%= link_to "#{image_tag('other/solera_sonar_logo.gif', :size=>'12x12')}",
-							"#{ip_specific_sonarcall}",
-							:target => "_blank", :title => "DeepSee Sonar: /ipv4_address/#{@event.source_ip}", :class => 'add_tipsy' %><br />
+						<%- if current_user.solera_api_enabled? -%>
+							<%= link_to "#{image_tag('other/solera_sonar_logo.gif', :size=>'12x12')}","#{ip_specific_sonarcall}", :target => "_blank", :title => "DeepSee Sonar: /ipv4_address/#{@event.source_ip}", :class => 'add_tipsy' %><br />
+						<%- end -%>
 					<%- end -%>
 					</span>
 					</td>
@@ -34,11 +31,9 @@
 							<%= link_to "#{image_tag('other/whois.png', :size=>'12x12')}", 
 								{ :action => 'whois', :whois_host => @event.destination_ip, :id => @event }, 
 									:rel => 'facebox', :title => "Whois: #{@event.destination_ip}", :class => 'add_tipsy' %>
-							<% # This should be wrapped in some kind of conditional %>
-							<% # See All Indexed Data about Destination IP in DeepSee Sonar %>
-							<%= link_to "#{image_tag('other/solera_sonar_logo.gif', :size=>'12x12')}", 
-								"#{ip_specific_sonarcall}#{@event.destination_ip}%2F;reportIndex=0",
-								:target => "_blank", :title => "DeepSee Sonar: /ipv4_address/#{@event.destination_ip}", :class => 'add_tipsy' %><br />
+									<%- if current_user.solera_api_enabled? -%>
+										<%= link_to "#{image_tag('other/solera_sonar_logo.gif', :size=>'12x12')}", "#{ip_specific_sonarcall}#{@event.destination_ip}%2F;reportIndex=0", :target => "_blank", :title => "DeepSee Sonar: /ipv4_address/#{@event.destination_ip}", :class => 'add_tipsy' %><br />
+										<%- end -%>
 						<%- end -%>
 						</span>
 					</td>

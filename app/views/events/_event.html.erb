@@ -11,12 +11,10 @@
 		</div>
 		
 		<div id='event_options_<%= event.sid + event.cid %>' class='event_options round'>
-				<% # This should be wrapped in some kind of conditional %>
-				<% # Link to Download Event as PCAP from Solera DS Appliance %>
+			<%- if current_user.solera_api_enabled? -%>
 				<%= link_to "#{image_tag('other/solera_logo.gif', :size => '14x14', :title => 'Download Event as PCAP.', :class => 'add_tipsy')}", event.solera_call(current_user, "pcap") %>
-				<% # This should be wrapped in some kind of conditional %>
-				<% # See Data about just Source IP and Dest IP (in the event's timespan) in DeepSee Sonar %>
 				<%= link_to "#{image_tag('other/solera_sonar_logo.gif', :size => '14x14', :title => 'See Event in DeepSee Sonar.', :class => 'add_tipsy')}", event.solera_call(current_user, "sonar"), :target => "_blank" %>
+			<%- end -%>
 			<%- if event.comments.blank? -%>
 				<%= image_tag('other/no_comment.png', :size=>'14x14') %>
 			<%- else -%>
