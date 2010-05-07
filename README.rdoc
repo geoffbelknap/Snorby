@@ -2,11 +2,13 @@
 
 Snorby is a new and modern Snort IDS front-end. The basic fundamental concepts behind snorby are simplicity and power. The project goal is to create a free, open source and highly competitive application for network monitoring for both private and enterprise use. Snorby is currently stable and ready for production environments.
 
+This Fork of snorby includes Integration with Solera Networks' Network Forensics Appliances and Software
+
 == Snorby Setup
 
 <b>Get Snorby:</b>
 
- git clone git://github.com/mephux/Snorby.git
+ git@github.com:fracBlend/Snorby.git
 	
 <b>Snorby Database Configuration:</b>
 
