@@ -8,7 +8,7 @@ This Fork of snorby includes Integration with Solera Networks' Network Forensics
 
 <b>Get Snorby:</b>
 
- git@github.com:fracBlend/Snorby.git
+ git clone git@github.com:fracBlend/Snorby.git
 	
 <b>Snorby Database Configuration:</b>
 
